@@ -6,6 +6,10 @@ Ziel war es, nicht nur eine funktionierende Anwendung zu erstellen, sondern auch
 # 📸 Preview
 ![Taschenrechner Vorschau ](image/screenshot.png)
 
+## 🌐 Der Link 
+
+[Hier klicken, um den Taschenrechner zu testen]([https://deinlink.com](https://black-lock.github.io/Taschenrechner/))
+
 # 🔹 Projektstruktur
 
 ## 🧱 HTML
