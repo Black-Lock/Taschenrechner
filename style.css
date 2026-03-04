@@ -11,7 +11,7 @@ body {
 section {
     display: flex;
     flex-wrap: wrap;
-    flex: 1; /*section takes all available free space.*/
+    flex: 1;/* Section nimmt den gesamten verfügbaren Platz ein */
     
     padding: 10px;
     font-size: 40px;
@@ -20,21 +20,25 @@ section {
 }
 
 #output {
-    flex-direction: column; /*we set column here on children of output-section  */
+    flex-direction: column; /* Children der Output-Section werden in einer Spalte angeordnet */
 
-    justify-content:flex-end ; /*to move sections down */
+    justify-content:flex-end ; /*to move sections down */ /* Inhalte werden nach unten ausgerichtet */
 
-    align-items: flex-end;/* to move it to right , the end of x-axe*/
+    align-items: flex-end;/* to move it to right , the end of x-axe*/ /* Inhalte werden nach rechts ausgerichtet */
 
-    gap: 15px;
+    gap: 15px; /* Abstand zwischen den Elementen */
 }
 
 .btn {
-    flex-basis: calc( 25% - 10px); /*that mean , if the width of window 100% , each button then take the width 25% minus 10px of it 
+    flex-basis: calc( 25% - 10px);
+   /* Ausgangsbreite eines Flex-Items: 
+       Bei einer Fensterbreite von 100% nimmt jeder Button 25% minus 10px ein.
+       flex-basis legt die Anfangsgröße des Flex-Elements vor Wachstum oder Schrumpfen fest. */
+   /*that mean , if the width of window 100% , each button then take the width 25% minus 10px of it 
     flex-basis is the starting width (or size) of a flex item before growing or shrinking, specifies the initial length of a flexible item.
     */
 
-    margin: 5px; /* the rest of black area on left disppeared*/
+    margin: 5px; /* the rest of black area on left disppeared, Abstand zwischen Buttons, verhindert, dass schwarze Fläche links verschwindet */
     font-size: 32px;
     height: 72px;
     border: 0;
@@ -69,3 +73,4 @@ section {
 .dark:hover {
     background-color: #505266;
 }
+
