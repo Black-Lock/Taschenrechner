@@ -1,4 +1,4 @@
-//firslty we will access DOM elemnents of the Calculator and creat some const that store value or variable and the const gonna not change
+//firslty we will access DOM elemnents of the Calculator and create some const that store value or variable and the const gonna not change
 
 const inputBox = document.getElementById("input");
 
@@ -6,22 +6,22 @@ const expressionDiv = document.getElementById("expression");
 
 const resultDiv = document.getElementById("result");
 
-//we will define expression and result variable
+// Definiere die Variablen für Ausdruck und Ergebnis
 
 let expression = "";
 let result = "";
 
-// we will define event handler for button clicks
+// Definiere den Event-Handler für Button-Klicks
 
 function buttonClick(event) {
-  // let get values from clicked button
+  // Hole das geklickte Button-Element
   const target = event.target;
 
   const action = target.dataset.action;
 
   const value = target.dataset.value;
 
-  //Switch case to control the calculator
+  // Steuere das Verhalten des Taschenrechners basierend auf der Aktion
 
   switch (action) {
     case "number":
@@ -41,6 +41,8 @@ function buttonClick(event) {
     case "subtraction":
     case "multiplication":
     case "devision":
+     // Wenn der Ausdruck leer ist, aber ein Ergebnis existiert, starte mit dem Ergebnis
+
       if (expression === "" && result !== "") {
         startFromResult(value);
       } else if (expression !== "" && !isLastCharOperator()) {
@@ -61,27 +63,30 @@ function buttonClick(event) {
       break;
   }
 
-  //update dispaly
+  // Aktualisiere die Anzeige des Taschenrechners
   updateDisplay(expression, result);
 }
+// Füge den Klick-Event-Listener zur Eingabebox hinzu
 
 inputBox.addEventListener("click", buttonClick);
 
-// 1)
+ // 1) Wert (Zahl oder Dezimalpunkt) zum Ausdruck hinzufügen //
+
+
 function AddValue(value) {
   // add value to expression
   //expression += value;
 
   if (value === ".") {
-    // find the index of the last operator in the expression
+    // Index des letzten Operators im Ausdruck finden
 
     const lastOperatorIndex = expression.search(/[+\-*/]/);
 
-    // find the index of the last decimal in the expression
+    // Index des letzten Dezimalpunkts im Ausdruck finden
 
     const lastDecimalIndex = expression.lastIndexOf(".");
 
-    // find the index of the last number in the expression
+    // Index der letzten Zahl im Ausdruck finden
 
     const lastNumberIndex = Math.max(
       expression.lastIndexOf("+"),
@@ -91,6 +96,8 @@ function AddValue(value) {
     );
 
     // check if this is the first decimal in the current number or if the expression is empty
+        // Dezimalpunkt hinzufügen, wenn es der erste in der aktuellen Zahl ist und gültig
+
 
     if (
       (lastDecimalIndex < lastOperatorIndex ||
@@ -105,7 +112,7 @@ function AddValue(value) {
     expression += value;
   }
 }
-// 2)
+// 2) Aktualisiere die Anzeige des Ausdrucks und Ergebnisses
 
 function updateDisplay(expression, result) {
   expressionDiv.textContent = expression;
@@ -113,39 +120,39 @@ function updateDisplay(expression, result) {
   resultDiv.textContent = result;
 }
 
-// 3)
+// 3) Lösche Ausdruck und Ergebnis
 
 function clear() {
   expression = "";
   result = "";
 }
 
-// 4)
+// 4) Entferne das letzte Zeichen aus dem Ausdruck
 
 function backspace() {
   expression = expression.slice(0, -1);
 }
 
-// 5) to avoid many operator sign
+// 5) Prüfe, ob das letzte Zeichen ein Operator ist , to avoid many operator sign
 
 function isLastCharOperator() {
   return isNaN(parseInt(expression.slice(-1)));
 }
 
-// 7)
+// 7) Starte einen neuen Ausdruck mit dem aktuellen Ergebnis
 
 function startFromResult(value) {
   expression += result + value;
 }
 
-// 8)
+// 8) Berechne den aktuellen Ausdruck und speichere das Ergebnis
 
 function submit() {
   result = evaluateExpression();
   expression = "";
 }
 
-// 9)
+// 9) Berechne den mathematischen Ausdruck sicher
 
 function evaluateExpression() {
   const evalResult = eval(expression);
@@ -157,28 +164,32 @@ function evaluateExpression() {
       : parseFloat(evalResult.toFixed(2)); // return a float number and first number
 }
 
-// 10)
+// 10) Negiere den aktuellen Ausdruck oder das Ergebnis
 
 function negate() {
-  //negate the result if the expression is empty and result is present
+  // Negiere das Ergebnis, wenn der Ausdruck leer ist
 
   if (expression === "" && result !== "") {
     result = -result;
 
     //toggle the sign of the expression  if it s not already negative and it s not empty
+    //   Vorzeichen des Ausdrucks umschalten, wenn es noch nicht negativ ist
+
   } else if (!expression.startsWith("-") && expression !== "") {
     expression = "-" + expression;
 
-    //Remove the negative sign from the expression if it s already negative
+  // Entferne das Minuszeichen, wenn der Ausdruck bereits negativ ist
   } else if (expression.startsWith("-")) {
     expression = expression.slice(1);
   }
 }
 
-// 11)
+// 11) Berechne den Prozentwert des aktuellen Ausdrucks oder Ergebnisses
 
 function percentage() {
   // evaluate the expression , else it will take the percentage of only the first number
+    // Prozentsatz auf Ausdruck oder Ergebnis anwenden
+
 
   if (expression !== "") {
     result = evaluateExpression();
@@ -193,13 +204,12 @@ function percentage() {
   }
 }
 
-// 12)
+// 12) Füge einen Dezimalpunkt sicher hinzu
 function decimal(value) {
   if (!expression.endsWith(".") && !isNaN(expression.slice(-1))) {
     AddValue(value);
   }
 }
 
-// 13)
 
-// 14)
+
