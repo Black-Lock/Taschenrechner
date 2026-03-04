@@ -8,7 +8,7 @@ Ziel war es, nicht nur eine funktionierende Anwendung zu erstellen, sondern auch
 
 ## 🌐 Der Link 
 
-[Hier klicken, um den Taschenrechner zu testen]([https://deinlink.com](https://black-lock.github.io/Taschenrechner/))
+[Hier klicken, um den Taschenrechner zu testen](https://black-lock.github.io/Taschenrechner/)
 
 # 🔹 Projektstruktur
 
